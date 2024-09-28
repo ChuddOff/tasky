@@ -7,17 +7,21 @@ import {
   NavbarItem,
 } from "@nextui-org/react";
 import Image from "next/image";
+import DarkMode from "../darkmode";
 
 const Header = () => {
   return (
     <Navbar
       isBordered={true}
-      className="select-none light:bg-white dark:bg-[#141417] w-full flex justify-between"
+      className="select-none bg-white dark:bg-[#141417]"
     >
-      <NavbarBrand>
+      <NavbarBrand className="flex gap-[20px]">
         <Link href="/">
-          <p className="font-bold text-[24px] uppercase text-black">Tasky</p>
+          <p className="font-bold text-[24px] uppercase text-black dark:text-white">
+            Tasky
+          </p>
         </Link>
+        <DarkMode />
       </NavbarBrand>
 
       <NavbarContent justify="end">
@@ -30,24 +34,21 @@ const Header = () => {
               height={22}
               className="cursor-pointer h-[22px] dark:invert"
             />
-            <p className="font-normal text-[18px] text-black">
-              Как исользовать?
+            <p className="font-normal text-[18px] text-black dark:text-white">
+              Как использовать?
             </p>
           </Button>
         </NavbarItem>
+        <NavbarItem></NavbarItem>
         <NavbarItem>
-          <Link className={"text-violet uppercase"} href="/wallet">
-            <Image
-              src="/wallet.svg"
-              alt="wallet"
-              width={32}
-              height={32}
-              className="cursor-pointer h-[32px] dark:invert"
-            />
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button href="/login" className="flex gap-[5px]">
+          <Button
+            as={Link}
+            href="/signin"
+            className="flex gap-[5px]"
+            color="primary"
+            showAnchorIcon
+            variant="solid"
+          >
             Войти
           </Button>
         </NavbarItem>
